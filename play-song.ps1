@@ -10,7 +10,7 @@ function Play-Tune
 
 	Add-Type -AssemblyName presentationCore
 	$mediaPlayer = New-Object system.windows.media.mediaplayer
-	$mediaPlayer.open('C:\Users\TaTje\Downloads\' + $Tune + '.mp3')
+	$mediaPlayer.open('songs/' + $Tune + '.mp3')
 	$mediaPlayer.Play()
 	Write-Output "Parameters: [$Tune]"
 }
