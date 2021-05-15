@@ -8,4 +8,4 @@ scan-probing<span>.sh</span> is a systemd service that runs on a Kali Linux mach
 The node server will check for requests from scan-probing<span>.sh</span>, then it will call the play-song.ps1 script with an argument specifying which song to play.
 
 ## play-song.ps1
-play-song.ps1 is a powershell script that will be invoked by the node server. It's role is to first check if it is within the specified time to play music, and if it is then it will play a little song.
+play-song.ps1 is a powershell script that will be invoked by the node server. It's role is to first check if it is within the specified time to play music, and if it is then it will play a little song. Should be noted that the script does not function properly without mpg123 installed to actually play the mp3 files.
