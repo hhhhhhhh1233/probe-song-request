@@ -1,10 +1,12 @@
 Write-Output "Parameters: [$args]"
 
-function Play-Tune {
+function Play-Tune 
+{
 
-	param (
-        $Tune
-    )
+	param 
+	(
+        	$Tune
+	)
 
 	Add-Type -AssemblyName presentationCore
 	$mediaPlayer = New-Object system.windows.media.mediaplayer
