@@ -1,3 +1,13 @@
+if (Get-Command mpg123 -errorAction SilentlyContinue)
+{
+	mpg123 --version
+}
+else
+{
+	Write-Output "mpg123 is not installed"
+	exit
+}
+
 Write-Output "Parameters: [$args]"
 
 if ($args.Count -eq 0)
