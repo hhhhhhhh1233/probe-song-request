@@ -16,34 +16,34 @@ function Play-Tune {
 $validMorning = ((Get-Date '08:30') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '11:00'))
 $validAfternoon = ((Get-Date '12:20') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '17:00'))
 
-$PlayFlag = "$(get-date -Format MMdd)-$($args[0])"
-Write-Output FM-$PlayFlag
+$PlayFlag = "flags/$(get-date -Format MMdd)-$($args[0])"
+Write-Output $PlayFlag-FM
 
 if ($validMorning -or $validAfternoon)
 {
 	if ($validMorning)
 	{
-		if (test-path FM-$PlayFlag)
+		if (test-path $PlayFlag-FM)
 		{
 			Write-Output "Already run today!"
 		}
 		else
 		{
 			Play-Tune $args[0]
-			Write-Output $null >> FM-$PlayFlag
+			Write-Output $null >> $PlayFlag-FM
 		}
 	}
 
 	if ($validAfternoon)
 	{
-		if (test-path EM-$PlayFlag)
+		if (test-path $PlayFlag-EM)
 		{
 			Write-Output "Already run today!"
 		}
 		else
 		{
 			Play-Tune $args[0]
-			Write-Output $null >> EM-$PlayFlag
+			Write-Output $null >> $PlayFlag-EM
 		}
 	}	
 }
