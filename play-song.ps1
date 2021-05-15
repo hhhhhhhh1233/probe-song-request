@@ -1,5 +1,17 @@
 Write-Output "Parameters: [$args]"
 
+if ($args.Count -eq 0)
+{
+	Write-Output "You must have at least one argument"
+	exit
+}
+
+if (!(test-path $('songs/' + $args[0] + '.mp3')))
+{
+	Write-Output $($args[0] + ".mp3 does not exist")
+	exit
+}
+
 function Play-Tune 
 {
 
