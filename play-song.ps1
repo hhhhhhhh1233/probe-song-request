@@ -14,7 +14,7 @@ function Play-Tune {
 }
 
 $validMorning = ((Get-Date '08:30') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '11:00'))
-$validAfternoon = ((Get-Date '12:20') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '17:00'))
+$validAfternoon = ((Get-Date '12:20') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '15:00'))
 
 $PlayFlag = "flags/$(get-date -Format MMdd)-$($args[0])"
 Write-Output $PlayFlag-FM
