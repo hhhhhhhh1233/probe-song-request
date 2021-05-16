@@ -22,7 +22,7 @@ if (!(test-path $('songs/' + $args[0] + '.mp3')))
 	exit
 }
 
-function Play-Tune 
+function Invoke-Tune 
 {
 
 	param 
@@ -50,7 +50,7 @@ if ($validMorning -or $validAfternoon)
 		}
 		else
 		{
-			Play-Tune $args[0]
+			Invoke-Tune $args[0]
 			Write-Output $null >> $PlayFlag-FM
 		}
 	}
@@ -63,7 +63,7 @@ if ($validMorning -or $validAfternoon)
 		}
 		else
 		{
-			Play-Tune $args[0]
+			Invoke-Tune $args[0]
 			Write-Output $null >> $PlayFlag-EM
 		}
 	}	
