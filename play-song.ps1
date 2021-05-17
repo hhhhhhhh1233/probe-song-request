@@ -16,6 +16,12 @@ if (!(test-path $('flags/')))
 	New-Item -Type Directory flags >> $null
 }
 
+if (!(test-path $('flags/now-playing')))
+{
+	Write-Output "File flags/now-playing does not exist"
+	Write-Output 0 | Out-File -FilePath flags/now-playing
+}
+
 if (!(test-path $('songs/')))
 {
 	Write-Output "Directory songs/ does not exist"
@@ -54,11 +60,9 @@ $validAfternoon = ((Get-Date '12:20') -lt (Get-Date) -and (Get-Date) -lt (Get-Da
 
 $PlayFlag = "flags/$(get-date -Format MMdd)-$($args[0])"
 
-#WRITE THIS TO FILE INSTEAD OF A VARIABLE
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-$NowPlaying = 0
+$NowPlaying = Get-Content ./flags/now-playing
 
-if (($validMorning -or $validAfternoon) -and !($NowPlaying))
+if (($validMorning -or $validAfternoon) -and ($NowPlaying -eq 0))
 {
 	if ($validMorning)
 	{
@@ -68,11 +72,10 @@ if (($validMorning -or $validAfternoon) -and !($NowPlaying))
 		}
 		else
 		{
-			$NowPlaying = 1
+			Write-Output 1 | Out-File -FilePath ./flags/now-playing
 			Write-Output $null >> $PlayFlag-FM
 			Invoke-Tune $args[0]
-			$NowPlaying = 0
-
+			Write-Output 0 | Out-File -FilePath ./flags/now-playing
 		}
 	}
 
@@ -84,14 +87,14 @@ if (($validMorning -or $validAfternoon) -and !($NowPlaying))
 		}
 		else
 		{
-			$NowPlaying = 1
+			Write-Output 1 | Out-File -FilePath ./flags/now-playing
 			Write-Output $null >> $PlayFlag-EM
 			Invoke-Tune $args[0]
-			$NowPlaying = 0
+			Write-Output 0 | Out-File -FilePath ./flags/now-playing
 		}
 	}	
 }
-elseif ($NowPlaying)
+elseif ($NowPlaying -eq 1)
 {
 	Write-Output "A song is already playing"
 }
@@ -99,4 +102,3 @@ else
 {
 	Write-Output "$(Get-Date -Format HH:mm) is not a valid time"
 }
-
