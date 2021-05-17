@@ -3,12 +3,12 @@ const app = express()
 const port = 3000
 var spawn = require("child_process").spawn,child;
 
-async app.get('/tage', (req, res) => {
+app.get('/tage', (req, res) => {
   res.send('Hello World!\n');
   console.log("worky_tage");
 
 child = spawn("powershell.exe",["c:\\temp\\helloworld.ps1 tage"]);
-await child.stdout.on("data",function(data){
+child.stdout.on("data",function(data){
     console.log("Powershell Data: " + data);
 });
 child.stdin.end(); //end input
