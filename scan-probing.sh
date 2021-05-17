@@ -2,8 +2,10 @@
 
 airmon-ng start wlan0
 
-MACS=(':f1:5a ' ':c8:a1 ' ':3d:73 ' ':a4:f2 ' ':c0:38 ' ':1f:21 ')
-SONG=('tim' 'tage' 'mikke' 'linus' 'lukas' 'elias')
+MACS=(':aa:aa ' ':bb:bb ' ':cc:cc ' ':dd:dd ' ':ee:ee ' ':ff:ff ')
+SONG=('person1' 'person2' 'person3' 'person4' 'person5' 'person6')
+
+NODE_SERVER=<IP ADDRESS OF WEB SERVER>
 
 while [ : ]; do
 	TSHARK_RESULTS=$(tshark -c 20 -i wlan0mon | grep "Probe Request")
@@ -11,7 +13,7 @@ while [ : ]; do
 	for MAC_ITEM in "${MACS[@]}"; do
 		if [[ $TSHARK_RESULTS == *$MAC_ITEM* ]]; then
 			echo "$MAC_ITEM is Probing"
-			curl -X GET 192.168.10.59:3000/${SONG[$COUNTER]}
+			curl -X GET $NODE_SERVER/${SONG[$COUNTER]}
 		else
 			echo "$MAC_ITEM is not Probing"
 		fi
