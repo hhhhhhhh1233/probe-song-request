@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MACS=(':f1:5a' ':c8:a1' ':3d:73')
+MACS=(':f1:5a ' ':c8:a1 ' ':3d:73 ')
 SONG=('tim' 'tage' 'mikke')
 
 while [ : ]; do
