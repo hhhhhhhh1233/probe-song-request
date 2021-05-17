@@ -1,6 +1,5 @@
 *~
 flags/*
-!flags/.keep
 songs/*
 !songs/.keep
 node_modules/*
