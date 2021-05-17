@@ -2,8 +2,8 @@
 
 airmon-ng start wlan0
 
-MACS=(':f1:5a ' ':c8:a1 ' ':3d:73 ')
-SONG=('tim' 'tage' 'mikke')
+MACS=(':f1:5a ' ':c8:a1 ' ':3d:73 ' ':a4:f2 ':c0:38 ' ':1f:21 )
+SONG=('tim' 'tage' 'mikke' 'linus' 'lukas' 'elias')
 
 while [ : ]; do
 	TSHARK_RESULTS=$(tshark -c 20 -i wlan0mon | grep "Probe Request")
