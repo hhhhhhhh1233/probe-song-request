@@ -50,8 +50,9 @@ if ($validMorning -or $validAfternoon)
 		}
 		else
 		{
-			Invoke-Tune $args[0]
 			Write-Output $null >> $PlayFlag-FM
+			Invoke-Tune $args[0]
+
 		}
 	}
 
@@ -63,8 +64,8 @@ if ($validMorning -or $validAfternoon)
 		}
 		else
 		{
-			Invoke-Tune $args[0]
 			Write-Output $null >> $PlayFlag-EM
+			Invoke-Tune $args[0]
 		}
 	}	
 }
