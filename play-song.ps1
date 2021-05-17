@@ -22,6 +22,13 @@ if (!(test-path $('songs/' + $args[0] + '.mp3')))
 	exit
 }
 
+if (!(test-path $('flags/')))
+{
+	Write-Output "Directory flags/ does not exist"
+	New-Item -Type Directory flags >> $null
+	exit
+}
+
 function Invoke-Tune 
 {
 
