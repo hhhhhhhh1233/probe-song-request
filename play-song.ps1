@@ -4,7 +4,7 @@ if (Get-Command mpg123 -errorAction SilentlyContinue)
 }
 else
 {
-	Write-Output "mpg123 is not installed"
+	Write-Output "[ERROR] mpg123 is not installed"
 	exit
 }
 
@@ -12,33 +12,41 @@ Write-Output "Parameters: [$args]"
 
 if (!(test-path $('flags/')))
 {
-	Write-Output "Directory flags/ does not exist"
+	Write-Output "Directory flags/ does not exist, creating directory"
 	New-Item -Type Directory flags >> $null
 }
 
 if (!(test-path $('flags/now-playing')))
 {
-	Write-Output "File flags/now-playing does not exist"
+	Write-Output "File flags/now-playing does not exist, creating file"
 	Write-Output 0 | Out-File -FilePath flags/now-playing
 }
 
 if (!(test-path $('songs/')))
 {
-	Write-Output "Directory songs/ does not exist"
+	Write-Output "[INFO] Directory songs/ does not exist"
 	New-Item -Type Directory songs >> $null
-	Write-Output "Please place .mp3 files into the songs directory before running again"
+	Write-Output "[WARNING] Please place .mp3 files into the songs directory before running again"
+	exit
+}
+
+$directoryInfo = Get-ChildItem songs | Measure-Object
+
+if ($directoryInfo.Count -lt 2)
+{
+	Write-Output "[ERROR] Directory songs is empty. Please place .mp3 files into directory songs"
 	exit
 }
 
 if ($args.Count -eq 0)
 {
-	Write-Output "You must have at least one argument"
+	Write-Output "[ERROR] You must have at least one argument"
 	exit
 }
 
 if (!(test-path $('songs/' + $args[0] + '.mp3')))
 {
-	Write-Output $($args[0] + ".mp3 does not exist")
+	Write-Output $("[ERROR] " + $args[0] + ".mp3 does not exist")
 	exit
 }
 
