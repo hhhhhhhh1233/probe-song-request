@@ -3,3 +3,5 @@ flags/*
 !flags/.keep
 songs/*
 !songs/.keep
+node_modules/*
+package-lock.json

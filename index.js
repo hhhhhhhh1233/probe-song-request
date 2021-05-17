@@ -3,35 +3,35 @@ const app = express()
 const port = 3000
 var spawn = require("child_process").spawn,child;
 
-app.get('/tage', (req, res) => {
+app.get('/tage', async (req, res) => {
   res.send('Hello World!\n');
   console.log("worky_tage");
 
 child = spawn("powershell.exe",["c:\\temp\\helloworld.ps1 tage"]);
-child.stdout.on("data",function(data){
+await child.stdout.on("data",function(data){
     console.log("Powershell Data: " + data);
 });
 child.stdin.end(); //end input
 
 })
 
-app.get('/tim', (req, res) => {
+app.get('/tim', async (req, res) => {
   res.send('Hello World!\n');
   console.log("worky_tim");
 
 child = spawn("powershell.exe",["c:\\temp\\helloworld.ps1 tim"]);
-child.stdout.on("data",function(data){
+await child.stdout.on("data",function(data){
     console.log("Powershell Data: " + data);
 });
 child.stdin.end(); //end input
 })
 
-app.get('/mikke', (req, res) => {
+app.get('/mikke', async (req, res) => {
   res.send('Hello World!\n');
   console.log("worky_mikke");
 
 child = spawn("powershell.exe",["c:\\temp\\helloworld.ps1 mikke"]);
-child.stdout.on("data",function(data){
+await child.stdout.on("data",function(data){
     console.log("Powershell Data: " + data);
 });
 child.stdin.end(); //end input
