@@ -30,9 +30,9 @@ if (!(test-path $('songs/')))
 	exit
 }
 
-$directoryInfo = Get-ChildItem songs | Measure-Object
+$directorySongs = Get-ChildItem songs | Measure-Object
 
-if ($directoryInfo.Count -lt 2)
+if ($directorySongs.Count -lt 2)
 {
 	Write-Output "[ERROR] Directory songs is empty. Please place .mp3 files into directory songs"
 	exit
