@@ -58,9 +58,9 @@ function Invoke-Tune
         	$Tune
 	)
 
+	Write-Output 1 | Out-File -FilePath ./flags/now-playing
 	mpg123 $('songs/' + $Tune + '.mp3')
-
-	Write-Output "Parameters: [$Tune]"
+	Write-Output 0 | Out-File -FilePath ./flags/now-playing
 }
 
 $validMorning = ((Get-Date '08:30') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '11:30'))
@@ -80,10 +80,8 @@ if (($validMorning -or $validAfternoon) -and ($NowPlaying -eq 0))
 		}
 		else
 		{
-			Write-Output 1 | Out-File -FilePath ./flags/now-playing
 			Write-Output $null >> $PlayFlag-FM
 			Invoke-Tune $args[0]
-			Write-Output 0 | Out-File -FilePath ./flags/now-playing
 		}
 	}
 
@@ -95,10 +93,8 @@ if (($validMorning -or $validAfternoon) -and ($NowPlaying -eq 0))
 		}
 		else
 		{
-			Write-Output 1 | Out-File -FilePath ./flags/now-playing
 			Write-Output $null >> $PlayFlag-EM
 			Invoke-Tune $args[0]
-			Write-Output 0 | Out-File -FilePath ./flags/now-playing
 		}
 	}	
 }
