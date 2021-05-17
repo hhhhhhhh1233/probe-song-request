@@ -2,7 +2,7 @@
 
 airmon-ng start wlan0
 
-MACS=(':f1:5a ' ':c8:a1 ' ':3d:73 ' ':a4:f2 ':c0:38 ' ':1f:21 ')
+MACS=(':f1:5a ' ':c8:a1 ' ':3d:73 ' ':a4:f2 ' ':c0:38 ' ':1f:21 ')
 SONG=('tim' 'tage' 'mikke' 'linus' 'lukas' 'elias')
 
 while [ : ]; do
