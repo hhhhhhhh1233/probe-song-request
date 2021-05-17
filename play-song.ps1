@@ -49,12 +49,16 @@ function Invoke-Tune
 	Write-Output "Parameters: [$Tune]"
 }
 
-$validMorning = ((Get-Date '08:30') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '11:00'))
+$validMorning = ((Get-Date '08:30') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '11:30'))
 $validAfternoon = ((Get-Date '12:20') -lt (Get-Date) -and (Get-Date) -lt (Get-Date '15:00'))
 
 $PlayFlag = "flags/$(get-date -Format MMdd)-$($args[0])"
 
-if ($validMorning -or $validAfternoon)
+#WRITE THIS TO FILE INSTEAD OF A VARIABLE
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$NowPlaying = 0
+
+if (($validMorning -or $validAfternoon) -and !($NowPlaying))
 {
 	if ($validMorning)
 	{
@@ -64,8 +68,10 @@ if ($validMorning -or $validAfternoon)
 		}
 		else
 		{
+			$NowPlaying = 1
 			Write-Output $null >> $PlayFlag-FM
 			Invoke-Tune $args[0]
+			$NowPlaying = 0
 
 		}
 	}
@@ -78,10 +84,16 @@ if ($validMorning -or $validAfternoon)
 		}
 		else
 		{
+			$NowPlaying = 1
 			Write-Output $null >> $PlayFlag-EM
 			Invoke-Tune $args[0]
+			$NowPlaying = 0
 		}
 	}	
+}
+elseif ($NowPlaying)
+{
+	Write-Output "A song is already playing"
 }
 else
 {
