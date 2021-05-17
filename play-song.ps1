@@ -10,6 +10,20 @@ else
 
 Write-Output "Parameters: [$args]"
 
+if (!(test-path $('flags/')))
+{
+	Write-Output "Directory flags/ does not exist"
+	New-Item -Type Directory flags >> $null
+}
+
+if (!(test-path $('songs/')))
+{
+	Write-Output "Directory songs/ does not exist"
+	New-Item -Type Directory songs >> $null
+	Write-Output "Please place .mp3 files into the songs directory before running again"
+	exit
+}
+
 if ($args.Count -eq 0)
 {
 	Write-Output "You must have at least one argument"
@@ -19,13 +33,6 @@ if ($args.Count -eq 0)
 if (!(test-path $('songs/' + $args[0] + '.mp3')))
 {
 	Write-Output $($args[0] + ".mp3 does not exist")
-	exit
-}
-
-if (!(test-path $('flags/')))
-{
-	Write-Output "Directory flags/ does not exist"
-	New-Item -Type Directory flags >> $null
 	exit
 }
 
