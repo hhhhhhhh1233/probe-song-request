@@ -12,7 +12,7 @@ NODE_SERVER=<IP ADDRESS OF WEB SERVER>
 airmon-ng start $MONITOR_CARD
 
 while [ : ]; do
-	TSHARK_RESULTS=$(tshark -c 20 -i wlan0mon | grep "Probe Request")
+	TSHARK_RESULTS=$(tshark -c 20 -i ${MONITOR_CARD}mon | grep "Probe Request")
 	COUNTER=0
 	for MAC_ITEM in "${MACS[@]}"; do
 		if [[ $TSHARK_RESULTS == *$MAC_ITEM* ]]; then
