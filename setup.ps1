@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 if (!(Get-Command choco -errorAction SilentlyContinue))
 {
     Write-Output "Chocolatey was not found, installing now..."
