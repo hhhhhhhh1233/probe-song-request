@@ -20,8 +20,8 @@ Ensure you have the following installed:
 In the git repo there is a install script to install everything needed.
 
 ## TODO
-[ ] make choco -y
-[ ] npm i .
+ - make choco -y
+ - npm i .
 
 
 ## Installation
