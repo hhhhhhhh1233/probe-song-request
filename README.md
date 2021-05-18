@@ -26,5 +26,5 @@ $ git clone https://github.com/hhhhhhhh1233/probe-song-request && cd probe-song-
 $ ./setup.ps1
 #---------------#
 $ npm install    #Install npm dependencies.
-$node ./index.js #Starts the webserver
+$ node ./index.js #Starts the webserver
 ```
