@@ -5,6 +5,8 @@ if (Get-Command mpg123 -errorAction SilentlyContinue)
 else
 {
 	Write-Output "[ERROR] mpg123 is not installed"
+	Write-Output "[INFO] You can install mpg123 with chocolatey"
+	Write-Output "https://chocolatey.org/"
 	exit
 }
 
