@@ -19,6 +19,11 @@ Ensure you have the following installed:
 
 In the git repo there is a install script to install everything needed.
 
+## TODO
+[ ] make choco -y
+[ ] npm i .
+
+
 ## Installation
 ```shell
 $ git clone https://github.com/hhhhhhhh1233/probe-song-request && cd probe-song-request
